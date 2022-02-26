@@ -1,6 +1,7 @@
 import express from "express"; 
 import { MongoClient } from "mongodb";
 import { usersRouter  } from "./routes/users.js";
+import { videoRouter } from "./routes/video.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
@@ -27,6 +28,7 @@ app.use(cookieParser())
 app.use(express.json())
 //routes
 app.use("/users",usersRouter);
+app.use("/video",videoRouter);
 
 
 app.get("/",(request,response)=>{

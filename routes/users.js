@@ -41,8 +41,7 @@ router.post("/login", async (request, response) => {
     if(isPasswordmatch){
         const token = jwt.sign({id:userfromdb._id},process.env.SECRET_KEY,{expiresIn:'10h'});
         //console.log(token)
-        response.status(200).send({message:"successful login",name:userfromdb.firstname+" "+userfromdb.lastname
-        ,token:token})
+        response.status(200).send({message:"successful login",user:userfromdb,token:token})
     }else{
         response.status(400).send({message:"Invalid credentials"})
     }
